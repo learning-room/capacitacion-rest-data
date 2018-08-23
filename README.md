@@ -6,7 +6,7 @@ De cada profesional se conoce el número de matricula (único para cada profesio
 
 *De los turnos de cada profesional es necesario saber el dia del turno, el profesional que es el que prestará servicios en ese turno, la clinica en la que va a atender y el paciente.*
 
-*Se debe tener en cuenta que un profesional puede prestar servicios en distintas clinicas, pero no en dos clinicas el mismo dia a la misma hora. Cada profesional dispone un numero finito de turnos para asignar en mañana o tarde. Es decir un profesional puede trabajar en la mañana en la clinica X y dispone de 4 turnos y el mismo profesional puede trabajar en la clinica Y de tarde y dispone 3 turnos. Cada turno es de media hora.*
+*Se debe tener en cuenta que un profesional puede prestar servicios en distintas clinicas, pero no en dos clinicas el mismo dia a la misma hora. Cada profesional dispone un numero finito de turnos para asignar en mañana o tarde. Es decir un profesional puede trabajar en la mañana en la clinica X y dispone de 4 turnos y el mismo profesional puede trabajar en la clinica Y de tarde y dispone 3 turnos.*
 
 ## Clase 1: Web API - Arquitectura de tres niveles
 En esta clase se iniciara con el desarrollo de la interfaz rest. Asi como tambien la implementación de la arquietectura de tres niveles.
