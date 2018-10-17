@@ -24,3 +24,51 @@ Cada uno de los niveles tiene sus responsabilidad. La interfaz rest es la encarg
 1. ¿Que es un Servlet?¿Cual es su ciclo de vida?¿Que beneficio nos brinda la vinculacion de una ruta web a un metodo en java?
 1. ¿Que es un contenedor de servlets?¿Cuales son los contenedores de servlets mas usados?
 1. ¿Que beneficio nos brinda spring boot web con respecto a otro framework? ¿Por que no necesitamos deployar nuestra aplicacion en un application server o en un contenedor de servlets?
+
+#### Respuestas
+
+* Servlet: 
+Un Servlet es un objeto de java que pertenece a una clase que extiende de javax.servlet.http.HttpServlet, este nos permite crear aplicaciones web dinámicas, lo que quiere decir que podemos realizar consultas.
+Son pequeños programas (applets) escritos en Java que admiten peticiones a través del protocolo HTTP. Los servlets reciben peticiones desde un navegador web, las procesan y devuelven una respuesta al navegador, normalmente en HTML. Para realizar esto pueden utilizar las herramientas del lenguaje Java.
+
+* Contenedor de Servlets: 
+Un contenedor de Servlet es un programa capaz de recibir peticiones de páginas web y redireccionar estas peticiones a un objeto Servlet en específico.
+Uno de los más populares es Apache Tomcat.
+Cómo funcionan los contenedores de Servlets
+El Browser pide una página al servidor HTTP que es un contenedor de Servlets
+El contenedor de Servlets delega la petición a un Servlet en particular elegido de entre los Servlets que contiene.
+El Servlet, que es una objeto java, se encarga de generar el texto de la página web que se entrega al contenedor.
+El contenedor devuelve la página web al Browser que la solicitó.
+
+* Contenedores de servlets mas usados:
+Existen muchos contenedores de Servlets como Apache Tomcat, Jboss, Oracle Glassfish Server ,etc.
+
+* Ciclo de vida de un servlets: 
+Los servlets no tienen el método main() como los programas Java, sino que se invocan unos métodos cuando se reciben peticiones. A esta metodología se le llama ciclo de vida de un servlet y viene dado por tres métodos: init, service, destroy:
+
+Cada servlet tiene el mismo ciclo de vida:
+
+- Un servidor carga e inicializa el servlet.
+- El servlet maneja cero o más peticiones de cliente.
+- El servidor elimina el servlet.
+
+INICIALIZACIÓN: Una única llamada al método “init” por parte del servlet. Incluso se pueden recoger unos parámetros concretos con “getInitParameter” de “ServletConfig” inicialales y que operarán a lo largo de toda la vida del servlet.
+SERVICIO: una llamada a service() por cada invocación al servlet para procesar las peticiones de los clientes web.
+DESTRUCCIÓN: Cuando todas las llamadas desde el cliente cesen o un temporizador del servidor así lo indique o el propio administrador así lo decida se destruye el servlet. Se usa el método “destroy” para eliminar al servlet y para “recoger sus restos” (garbage collection).
+
+* Beneficio nos brinda spring boot web con respecto a otro framework: 
+
+- El principal beneficio es que este framework, nos brinda todo, es decir el código dependiente del entorno está dentro de este framework.
+Si un objeto sólo conoce a sus dependencias mediante su interfaz (no por su implementación), podremos cambiar la implementación de esa dependencia como consideremos necesario sin que el objeto sea consciente de esos cambios y, por tanto, sin que le afecten.
+El framework Spring se compone de varios módulos, todos ellos giran entorno a Spring Container, el cual se encarga de crear los objetos, conectarlos entre si, configurarlos y además controla los ciclos de vida de cada objeto mediante el patrón de Inyección de Dependencias ( Dependency Injection ó DI ). 
+- Otro beneficio es que nuestro código Java puede ser más limpio, elegante y reutilizable. Elegante y reutilizable ya que la filosofía de Spring nos guía a programar orientado a interfaces, de modo que toda nuestra aplicación sea altamente modular y posea bajo acoplamiento. 
+Spring se acopla a tu aplicación sin obligarte a modificar tu código para utilizar las funcionalidades y beneficios que ofrece. 
+Para usar Spring no es imprescindible implementar un interfaz propio de Spring o heredar de una clase propia (puede que para utilizar cierta funcionalidad avanzada sí sea necesario, pero para un uso habitual no); lo que significa que Spring estará ahí pero tus clases serán Java puro y duro. 
+Como mucho, tus clases tendrán anotaciones propias de Spring, pero no dejan de ser anotaciones por lo que tu clase será reutilizable en cualquier momento, sin cambios. 
+Esta característica con otros frameworks es impensable, ya que para poder utilizar dicho framework habrás tenido que implementar un interfaz propio del framework y a la vez implementar los métodos establecidos en dicho interfaz; métodos que fuera de ese framework no tienen ningún sentido ni utilidad.
+- Y como ya se dijo la inyección de dependencias, esto nos permite solucionar de forma sencilla y elegante cómo proporcionar a un objeto cliente acceso a un objeto que da un servicio que este necesita. Por ejemplo, que un objeto de la capa de presentación se pueda comunicar con uno de negocio. En Spring las dependencias se pueden definir con anotaciones.
+
+* Por que no necesitamos deployar nuestra aplicacion en un application server o en un contenedor de servlets
+
+Cuando creamos una aplicación con Spring boot, usualemente se utiliza Tomcat embebido para el despliegue, al empaquetarlo como jar, Spring va a autoconfigurarnos algunos aspectos de la aplicación para sólo tener que centrarnos en el desarrollo, a diferencia del empaquetado como war, donde deberemos encargarnos nosotros mismos.
+Otra ventaja es que, de esta forma, evitamos el problema de tener que mantener sincronización entre las versiones de la aplicación y la configuración del servidor.
